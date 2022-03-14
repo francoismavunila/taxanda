@@ -5,6 +5,7 @@ import Users from './Users';
   return (
     <section>
       <h1>admin page</h1>
+        <div>navbar</div>
         <Users/>
     </section>
   )

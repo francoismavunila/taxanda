@@ -33,12 +33,12 @@ const Login = () => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         axios.post('/user/login', {
-            mail: email,
+            email: email,
             password: password
           })
           .then(function (response) {
             console.log(response);
-            if(response.data.user){
+            if(response.data){
               const accessToken = response?.data?.accessToken;
               const roles = response?.data?.roles;
               setAuth({email, password, roles, accessToken});
@@ -54,8 +54,8 @@ const Login = () => {
             if(!err?.response){
               setErrMsg('No Server Response');
             }else if(err.response?.status==400){
-              setErrMsg('missing Your Username or Password');
-            }else if(err.response?.status==400){
+              setErrMsg('Missing Username or Password');
+            }else if(err.response?.status==401){
               setErrMsg('UnAuthorized');
             }else{
               setErrMsg('Failed Login')
@@ -79,11 +79,11 @@ useEffect(()=>{
                 <Avatar  style={avatarStyle}><LockIcon/></Avatar>
                 <h2 >Sign In</h2>
             </Grid>
-            <form  noValidate autoComplete="off">
+            <form  noValidate >
                 <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
                 fullWidth required 
                 onChange={e => setEmail(e.target.value)} className="space" inputRef={userRef}/>
-                <TextField id="standard-basic" label="password" 
+                <TextField id="standard-basic"  label="password"
                 placeholder='Enter password' type='password' value={password} fullWidth required
                 onChange={e => setPassword(e.target.value)} className="space"/>
             </form>

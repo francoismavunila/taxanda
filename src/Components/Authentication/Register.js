@@ -51,13 +51,13 @@ const Register = () => {
             <form  noValidate autoComplete="off">
                 <TextField id="standard-basic" label="name" placeholder='Enter name' value={name}
                 fullWidth required 
-                onChange={e => setName(e.target.value)} className="space"/>
+                onChange={e => setName(e.target.value)} className="space" />
                 <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
                 fullWidth required 
-                onChange={e => setEmail(e.target.value)} className="space"/>
+                onChange={e => setEmail(e.target.value)} className="space" />
                 <TextField id="standard-basic" label="password" 
                 placeholder='Enter password' type='password' value={password} fullWidth required
-                onChange={e => setPassword(e.target.value)} className="space"/>
+                onChange={e => setPassword(e.target.value)} className="space" />
             </form>
             <Button onClick={handleSubmit} variant="contained" color="primary" className="space">Submit</Button>
         </Paper>

@@ -8,11 +8,14 @@ import Admin from './Components/Home/Admin';
 function App() {
   return (
     <div className="App">
+      <div>
       <Routes>
         <Route path='/' exact element={<Login/>} />
         <Route path="/register" exact element={<Register/>} />   
         <Route path="/admin" exact element={<Admin/>} />  
       </Routes>
+      </div>
+    
     </div>
   );
 }
