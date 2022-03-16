@@ -6,6 +6,10 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Login.css'
 import axios from '../../axiosInstance';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+
 
 
 const Register = () => {
@@ -26,6 +30,8 @@ const Register = () => {
     const [name, setName] = useState("")
 
     const [password, setPassword] = useState("")
+    
+    const [role, setRole] = useState("")
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -51,14 +57,27 @@ const Register = () => {
             <form  noValidate autoComplete="off">
                 <TextField id="standard-basic" label="name" placeholder='Enter name' value={name}
                 fullWidth required 
-                onChange={e => setName(e.target.value)} className="space" />
+                onChange={e => setName(e.target.value)} className="space" /><br/>
                 <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
                 fullWidth required 
-                onChange={e => setEmail(e.target.value)} className="space" />
+                onChange={e => setEmail(e.target.value)} className="space" /><br/>
                 <TextField id="standard-basic" label="password" 
                 placeholder='Enter password' type='password' value={password} fullWidth required
                 onChange={e => setPassword(e.target.value)} className="space" />
+                <br/><br/>
+                <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={role}
+                onChange={e=>setRole(e.target.value)}
+              >
+                <MenuItem value={992}>Admin</MenuItem>
+                <MenuItem value={995}>Editor</MenuItem>
+                <MenuItem value={998}>User</MenuItem>
+              </Select>
             </form>
+            <br />
             <Button onClick={handleSubmit} variant="contained" color="primary" className="space">Submit</Button>
         </Paper>
     </Grid>
