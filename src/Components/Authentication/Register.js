@@ -38,7 +38,8 @@ const Register = () => {
         axios.post('/user/register', {
             name : name,
             email: email,
-            password: password
+            password: password,
+            role : role
           })
           .then(function (response) {
             console.log(response);

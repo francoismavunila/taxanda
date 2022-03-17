@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect ,useContext } from 'react';
-import AuthContext from '../../Context/AuthProvider';
+import React, { useState, useRef, useEffect } from 'react';
 import { Grid, Paper, useForkRef} from '@material-ui/core';
 import LockIcon from '@material-ui/icons/Lock';
 import { Avatar } from "@material-ui/core";
@@ -7,6 +6,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './Login.css'
 import axios from '../../axiosInstance';
+import useAuth from '../../Hooks/useAuth';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
+
 
 
 const Login = () => {
@@ -22,7 +24,11 @@ const Login = () => {
     const avatarStyle={
         backgroundColor : '#1c0042'
     }
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef();
 
@@ -35,16 +41,21 @@ const Login = () => {
         axios.post('/user/login', {
             email: email,
             password: password
-          })
+          },
+          {
+            headers:{'Content-Type':'application/json'},
+            withCredentials: true
+          }
+          )
           .then(function (response) {
             console.log(response);
             if(response.data){
               const accessToken = response?.data?.accessToken;
-              const roles = response?.data?.roles;
+              const roles = response?.data?.role;
               setAuth({email, password, roles, accessToken});
               setEmail('');
               setPassword('');
-              window.location.href='/home';
+              navigate(from,{replace: true});
             }else{
               alert('please check your username and password')
             }
