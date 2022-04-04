@@ -7,8 +7,8 @@ const instance = axios.create({
   
 export const axiosPrivate = axios.create({
     baseURL: BASE_URL,
-    headers:{'Content-Type':'application/json'},
-    withCredentials:true
+    headers:{'Content-Type':'application/json'}, 
+    withCredentials:true    //adds cookie on requests
 });
   
   // Alter defaults after instance has been created

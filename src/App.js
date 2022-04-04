@@ -12,6 +12,7 @@ import RequireAuth from './Components/RequireAuth';
 import UnAthorized from './Components/UnAuthorized';
 import HOme from './Components/Home/Home'
 import Users from './Components/Home/Users';
+import Driver from './Components/Driver/Driver'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       {/* public routes */}
       <Route path="login" element={<Login/>}/>
       <Route path="unAthorized" element={<UnAthorized/>}/>
+      <Route path="driver/register" element={<Driver/>}/>
       
       {/* protected routes */}
       <Route element={<RequireAuth allowedRoles={[992,995,998]} />}  >
