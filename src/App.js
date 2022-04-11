@@ -13,6 +13,7 @@ import UnAthorized from './Components/UnAuthorized';
 import HOme from './Components/Home/Home'
 import Users from './Components/Home/Users';
 import Driver from './Components/Driver/Driver'
+import AddFinger from './Components/Driver/AddFinger';
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
       {/* public routes */}
       <Route path="login" element={<Login/>}/>
       <Route path="unAthorized" element={<UnAthorized/>}/>
-      <Route path="driver/register" element={<Driver/>}/>
+      <Route path="driver/registration"  element={<Driver />} />
+      <Route path='registration' element={<Register/>}/>
+      <Route path='addfingerprint' element={<AddFinger/>}/>
       
       {/* protected routes */}
       <Route element={<RequireAuth allowedRoles={[992,995,998]} />}  >
@@ -34,7 +37,7 @@ function App() {
          <Route path='admin' element={<Admin/>}/>
       </Route>
       <Route element={<RequireAuth allowedRoles={[992]} />}  >
-          <Route path='registration' element={<Register/>}/>
+          
           <Route path='/users' element={<Users/>} />
       </Route>
       

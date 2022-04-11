@@ -94,7 +94,7 @@ useEffect(()=>{
                 <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
                 fullWidth required 
                 onChange={e => setEmail(e.target.value)} className="space" inputRef={userRef}/>
-                <TextField id="standard-basic"  label="password"
+                <TextField id="filled"  label="password"
                 placeholder='Enter password' type='password' value={password} fullWidth required
                 onChange={e => setPassword(e.target.value)} className="space"/>
             </form>
