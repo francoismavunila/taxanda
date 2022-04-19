@@ -7,7 +7,7 @@ import Layout from './Layout.js'
 import Editor from './Components/Home/Editor';
 import General from './Components/Home/General';
 import Missing from './Components/Missing';
-import { Home } from '@material-ui/icons';
+import { Home } from '@mui/icons-material';
 import RequireAuth from './Components/RequireAuth';
 import UnAthorized from './Components/UnAuthorized';
 import HOme from './Components/Home/Home'

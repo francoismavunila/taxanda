@@ -1,29 +1,25 @@
 import React, { useState,useRef,useEffect } from 'react';
-import { Grid, Paper} from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
-import { Avatar } from "@material-ui/core";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { Grid, Paper} from '@mui/material';
+import LockIcon from '@mui/icons-material/Lock';
+import { Avatar } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import './Login.css';
 import '../message.css';
 import axios from '../../axiosInstance';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import makeStyles from '@mui/styles/makeStyles';
 import '../forms.css'
-
+import useStyles from '../textFields';
 
 
 const Register = () => {
-  const useStyles = makeStyles({
-    input: {
-      color: "white"
-    }
-  });
+  const classes = useStyles();
     const paperStyle ={
         padding : 20,
-        height : '70vh',
+        height : 'auto',
         margin :"20px auto",
         width :300,
         backgroundColor : 'rgba(00,00,00,0.4)',
@@ -33,13 +29,17 @@ const Register = () => {
     const avatarStyle={
         backgroundColor : '#1c0042'
     }
+
+
+    
+
     const [email, setEmail] = useState("")
 
     const [name, setName] = useState("")
 
     const [password, setPassword] = useState("")
     
-    const [role, setRole] = useState("")
+    const [role, setRole] = useState("admin")
 
     const [errMsg, setErrMsg] = useState('')
 
@@ -92,7 +92,7 @@ const Register = () => {
       setSuccMsg('');
     },[email, password,name,role])
 
-    const classes = useStyles();
+    
   return (
     <Grid>
         <Paper elavation={24} style={paperStyle}>
@@ -103,27 +103,30 @@ const Register = () => {
                 <h2 >Register</h2>
             </Grid>
             <form  noValidate>
-                <TextField id="standard-basic" inputProps={{ className: classes.input }} variant="filled" label="name" placeholder='Enter name' value={name}
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="name" placeholder='Enter name' value={name}
                 fullWidth required 
-                onChange={e => setName(e.target.value)} className="space" inputRef={userRef} /><br/>
-                <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
+                onChange={e => setName(e.target.value)}  inputRef={userRef} /><br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled" label="email" placeholder='Enter email' value={email} 
                 fullWidth required 
-                onChange={e => setEmail(e.target.value)} className="space" /><br/>
-                <TextField id="standard-basic" label="password" 
+                onChange={e => setEmail(e.target.value)}  /><br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled" label="password" 
                 placeholder='Enter password' type='password' value={password} fullWidth required
-                onChange={e => setPassword(e.target.value)} className="space" />
-                <br/><br/>
-                <InputLabel id="demo-simple-select-label">Role</InputLabel>
-                <Select
+                onChange={e => setPassword(e.target.value)}  />
+                <br></br><br></br>
+                <InputLabel   id="demo-simple-select-label">Role</InputLabel>
+                <Select className={classes.root} 
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={role}
+                value={role} 
+                label="Role" 
                 onChange={e=>setRole(e.target.value)}
               >
                 <MenuItem value={992}>Admin</MenuItem>
                 <MenuItem value={995}>Editor</MenuItem>
                 <MenuItem value={998}>User</MenuItem>
               </Select>
+              <br></br><br></br>
+              
             </form>
             <br />
             <Button onClick={handleSubmit} variant="contained" color="primary" className="space">Submit</Button>

@@ -1,17 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Grid, Paper, useForkRef} from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
-import { Avatar } from "@material-ui/core";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { Grid, Paper, useForkRef} from '@mui/material';
+import LockIcon from '@mui/icons-material/Lock';
+import { Avatar } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import './Login.css'
 import axios from '../../axiosInstance';
 import useAuth from '../../Hooks/useAuth';
 import { Link, useNavigate, useLocation} from 'react-router-dom';
-
-
+import useStyles from '../textFields';
 
 const Login = () => {
+  const classes = useStyles();
     const paperStyle ={
         padding : 20,
         height : '70vh',
@@ -83,7 +83,7 @@ useEffect(()=>{
 },[email, password])
 
   return (
-    <Grid>
+    <Grid >
         <Paper elavation={24} style={paperStyle}>
           <p ref={errRef} className={errMsg? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
             <Grid align='center'>
@@ -91,17 +91,19 @@ useEffect(()=>{
                 <h2 >Sign In</h2>
             </Grid>
             <form  noValidate >
-                <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
-                fullWidth required 
-                onChange={e => setEmail(e.target.value)} className="space" inputRef={userRef}/>
-                <TextField id="filled"  label="password"
+                <TextField id="filled-basic" variant="filled"  label="email" placeholder='Enter email' value={email} 
+                  color="" fullWidth required 
+                onChange={e => setEmail(e.target.value)} className={classes.root} inputRef={userRef} />
+                <br></br><br></br>
+                <TextField  id="filled-basic" className={classes.root}  variant="filled" label="password"
                 placeholder='Enter password' type='password' value={password} fullWidth required
-                onChange={e => setPassword(e.target.value)} className="space"/>
-            </form>
-            <Button onClick={handleSubmit} variant="contained" color="primary" className="space">Submit</Button>
+                onChange={e => setPassword(e.target.value)} />
+            </form><br></br><br></br>
+            <Button onClick={handleSubmit} variant="contained" >Submit</Button>
         </Paper>
     </Grid>
   )
 }
+
 
 export default Login;

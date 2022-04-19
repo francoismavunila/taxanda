@@ -1,19 +1,20 @@
 import React, { useState,useRef,useEffect } from 'react';
-import { Grid, Paper} from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
-import { Avatar } from "@material-ui/core";
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { Grid, Paper} from '@mui/material';
+import LockIcon from '@mui/icons-material/Lock';
+import { Avatar } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import axios from '../../axiosInstance';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 import '../message.css'
 import {Routes,Route,Link,useNavigate} from 'react-router-dom';
-
+import useStyles from '../textFields';
 
 
 const Driver = () => {
+  const classes = useStyles();
   const navigate = useNavigate();
     const paperStyle ={
         padding : 20,
@@ -116,39 +117,39 @@ const Driver = () => {
                 <h2 >Driver Registration</h2>
             </Grid>
             <form  noValidate autoComplete="off">
-                <TextField id="standard-basic" label="driver name" placeholder='Enter name' value={name}
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="driver name" placeholder='Enter name' value={name}
                 fullWidth required 
-                onChange={e => setName(e.target.value)} className="space" inputRef={userRef} /><br/>
-                <TextField id="standard-basic" label="driver surname" placeholder='Enter name' value={surname}
+                onChange={e => setName(e.target.value)}  inputRef={userRef} /><br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="driver surname" placeholder='Enter name' value={surname}
                 fullWidth required 
-                onChange={e => setSurname(e.target.value)} className="space" /><br/>
-                <TextField id="standard-basic" label="email" placeholder='Enter email' value={email} 
+                onChange={e => setSurname(e.target.value)}  /><br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="email" placeholder='Enter email' value={email} 
                 fullWidth required 
-                onChange={e => setEmail(e.target.value)} className="space" /><br/>
-                <TextField id="standard-basic" label="phone" 
+                onChange={e => setEmail(e.target.value)}  /><br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="phone" 
                 placeholder='Enter phone number' value={phone} fullWidth required
-                onChange={e => setPhone(e.target.value)} className="space" />
-                <br/>
-                <TextField id="standard-basic" label="national id" 
+                onChange={e => setPhone(e.target.value)}  />
+<br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="national id" 
                 placeholder='Enter your national id' value={national} fullWidth required
-                onChange={e => setNational(e.target.value)} className="space" />
-                <br/>
-                <TextField id="standard-basic" label="Driver Licence No" 
+                onChange={e => setNational(e.target.value)}  />
+<br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="Driver Licence No" 
                 placeholder='Driver Licence No' value={DriverLicence} fullWidth required
-                onChange={e => setDriverLicence(e.target.value)} className="space" />
-                <br/>
-                <TextField id="standard-basic" label="Vehicle Reg No" 
+                onChange={e => setDriverLicence(e.target.value)}  />
+<br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="Vehicle Reg No" 
                 placeholder='Vehicle Reg No' value={VehicleReg} fullWidth required
-                onChange={e => setVehicleReg(e.target.value)} className="space" />
-                <br/><br/>
-                <TextField id="standard-basic" label="Resedential Address" 
+                onChange={e => setVehicleReg(e.target.value)}  />
+                <br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="Resedential Address" 
                 placeholder='Resedential Address' value={Address} fullWidth required
-                onChange={e => setAddress(e.target.value)} className="space" />
-                <br/>
-                <TextField id="standard-basic" label="responder" 
+                onChange={e => setAddress(e.target.value)}  />
+                <br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="responder" 
                 placeholder='Enter your responder' value={responder} fullWidth required
-                onChange={e => setResponder(e.target.value)} className="space" />
-                <br/>
+                onChange={e => setResponder(e.target.value)}  />
+                <br></br><br></br>
             </form>
             
             <br />

@@ -1,18 +1,19 @@
 import React, { useState,useRef,useEffect } from 'react';
 import mqtt from 'mqtt'
-import { Grid, Paper} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { Grid, Paper} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import {Routes,Route,Link,useLocation,useNavigate} from 'react-router-dom';
 import './driver.css'
-import '../message.css'
-import SignalCellularAltOutlinedIcon from '@material-ui/icons/SignalCellularAltOutlined';
-import SignalCellularOffOutlinedIcon from '@material-ui/icons/SignalCellularOffOutlined';
-
+import '../message.css';
+import SignalCellularAltOutlinedIcon from '@mui/icons-material/SignalCellularAltOutlined';
+import SignalCellularOffOutlinedIcon from '@mui/icons-material/SignalCellularOffOutlined';
+import useStyles from '../textFields';
 
 const AddFinger = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const classes = useStyles();
     const paperStyle ={
         padding : 20,
         height : 'auto',
@@ -132,12 +133,12 @@ const AddFinger = () => {
                 <h2 >{messageStatus}</h2>
             </Grid>
             <form  noValidate autoComplete="off">
-                <TextField id="standard-basic" label="device id" placeholder='Enter device id' value={device_id}
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="device id" placeholder='Enter device id' value={device_id}
                 fullWidth required 
-                onChange={e => setDeviceId(e.target.value)} className="space" inputRef={userRef} /><br/>
-                <TextField id="standard-basic" label="driver id" placeholder='Enter driver id' value={driver_id}
+                onChange={e => setDeviceId(e.target.value)} inputRef={userRef} /><br></br><br></br>
+                <TextField className={classes.root}  id="filled-basic" variant="filled"  label="driver id" placeholder='Enter driver id' value={driver_id}
                 fullWidth required 
-                onChange={e => setDriverId(e.target.value)} className="space" /><br/>
+                onChange={e => setDriverId(e.target.value)} /><br></br><br></br>
             </form>
             {/* {shouldRedirect && <Navigate
                     to={{
@@ -146,7 +147,8 @@ const AddFinger = () => {
                     }}
                     />} */}
             <br />
-            <button onClick={getFinger}>Get Finger Print</button> 
+            <Button onClick={getFinger} color='primary'>Get Finger Print</Button> 
+          
         </Paper>
         <h3>Instructions</h3>
         <ol>
